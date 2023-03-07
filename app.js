@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const tasks = require('./routes/tasks');
 const connectDB = require('./db/connect');
+const notFound = require('./middleware/not-found');
 require('dotenv').config()
 
 // middleware
@@ -11,6 +12,8 @@ app.use(express.json());
 app.get('/', (req, res) => {
     res.send('<h1>Task Manager API</h1>');
 });
+
+app.use(notFound);
 
 // routes
 app.use('/api/v1/tasks', tasks);
