@@ -13,10 +13,10 @@ app.get('/', (req, res) => {
     res.send('<h1>Task Manager API</h1>');
 });
 
-app.use(notFound);
-
 // routes
 app.use('/api/v1/tasks', tasks);
+
+app.use(notFound);
 
 const port = 5000;
 
